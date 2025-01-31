@@ -11,6 +11,22 @@ body {
   background-color: #242323;
 }
 
+label {
+  display: block;
+}
+
+input {
+  margin: 0;
+}
+
+form {
+  margin-top: 1rem;
+}
+
+button[type="submit"] {
+  float: right;
+}
+
 .container {
   /* height: 100vh; */
   display: flex;
@@ -35,6 +51,10 @@ body {
   width: 10rem;
   height: 3rem;
   border-radius: 16px;
+}
+
+#close-dialog {
+  float: right;
 }
 
 .library-container {

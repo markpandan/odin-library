@@ -12,16 +12,6 @@
       <button id="open-dialog">Enter A New Book</button>
       <div class="library-container">
         <!-- Book Entries -->
-        <div data-index="0" class="library-card">
-          <h3>This Book is Everything!</h3>
-
-          <p>Author: John Doe</p>
-          <p>Pages: 67</p>
-          <p>Status: Not Read</p>
-
-          <button>Mark as Unread</button>
-          <button>Delete</button>
-        </div>
       </div>
     </div>
     <dialog>
@@ -30,7 +20,7 @@
       <!-- TODO: Make a form validation -->
       <form>
         <div>
-          <label for="author">Author</label>
+          <label for="author">Author:</label>
           <input
             type="text"
             name="author"
@@ -41,7 +31,7 @@
           />
         </div>
         <div>
-          <label for="title">Title</label>
+          <label for="title">Title:</label>
           <input
             type="text"
             name="title"
@@ -51,7 +41,7 @@
           />
         </div>
         <div>
-          <label for="pages">Pages</label>
+          <label for="pages">Pages:</label>
           <input
             type="number"
             name="pages"
@@ -62,7 +52,7 @@
           />
         </div>
         <div>
-          <label for="isRead">Read?</label>
+          <label for="isRead">Finish Reading</label>
           <input type="checkbox" name="isRead" id="isRead" />
         </div>
         <button type="submit">Submit</button>
