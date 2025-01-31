@@ -11,11 +11,23 @@
     <div class="container">
       <button id="open-dialog">Enter A New Book</button>
       <div class="library-container">
-        <div class="library-card"></div>
+        <!-- Book Entries -->
+        <div data-index="0" class="library-card">
+          <h3>This Book is Everything!</h3>
+
+          <p>Author: John Doe</p>
+          <p>Pages: 67</p>
+          <p>Status: Not Read</p>
+
+          <button>Mark as Unread</button>
+          <button>Delete</button>
+        </div>
       </div>
     </div>
     <dialog>
       <button id="close-dialog">X</button>
+
+      <!-- TODO: Make a form validation -->
       <form>
         <div>
           <label for="author">Author</label>
