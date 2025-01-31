@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #242323;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.modal {
+  width: min(100%, 50rem);
+  height: min(100%, 50rem);
+  background-color: whitesmoke;
+}
+
+#open-dialog {
+  font-family: inherit;
+  appearance: none;
+  background-color: green;
+  color: white;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 16px;
+}
+
+.library-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.library-card {
+  background-color: white;
+  height: 250px;
+  border-radius: 16px;
+}
