@@ -7,23 +7,24 @@ const libraryContainer = document.querySelector(".library-container");
 
 let myLibrary = [];
 
-function Book() {
-  this.author = "No Author";
-  this.title = "No Title";
-  this.pages = "0";
-  this.isRead = null;
+class Book {
+  constructor(author, title, pages, isRead) {
+    this.author = author;
+    this.title = title;
+    this.pages = pages;
+    this.isRead = isRead;
+  }
 }
 
-function addBookToLibrary(author, title, pages, isRead) {
-  let book = new Book();
-  book.author = author;
-  book.title = title;
-  book.pages = pages;
-  book.isRead = isRead;
+// For opening the dialog
+const dialog = document.querySelector("dialog");
+const openDialog = document.querySelector("#open-dialog");
+openDialog.addEventListener("click", () => dialog.showModal());
 
-  myLibrary.push(book);
-  console.log(myLibrary);
-}
+const closeDialog = document.querySelector("#close-dialog");
+closeDialog.addEventListener("click", (e) => {
+  dialog.close();
+});
 
 function displayBookLibrary() {
   libraryContainer.textContent = "";
@@ -77,15 +78,12 @@ function displayBookLibrary() {
   });
 }
 
-// For opening the dialog
-const dialog = document.querySelector("dialog");
-const openDialog = document.querySelector("#open-dialog");
-openDialog.addEventListener("click", () => dialog.showModal());
+function addBookToLibrary(author, title, pages, isRead) {
+  let book = new Book(author, title, pages, isRead);
 
-const closeDialog = document.querySelector("#close-dialog");
-closeDialog.addEventListener("click", (e) => {
-  dialog.close();
-});
+  myLibrary.push(book);
+  console.log(myLibrary);
+}
 
 submit.addEventListener("click", (e) => {
   e.preventDefault();
