@@ -1,3 +1,5 @@
+import displayBookLibrary from "./components/displayBookLibrary.js";
+
 const author = document.querySelector("#author");
 const title = document.querySelector("#title");
 const pages = document.querySelector("#pages");
@@ -26,58 +28,6 @@ closeDialog.addEventListener("click", (e) => {
   dialog.close();
 });
 
-function displayBookLibrary() {
-  libraryContainer.textContent = "";
-  myLibrary.forEach((book, index) => {
-    const card = document.createElement("div");
-    card.classList.add("library-card");
-    card.setAttribute("data-index", index);
-
-    const titleElement = document.createElement("h3");
-    titleElement.textContent = book.title;
-    card.appendChild(titleElement);
-
-    const authorElement = document.createElement("p");
-    authorElement.textContent = `Author: ${book.author}`;
-    card.appendChild(authorElement);
-
-    const pagesElement = document.createElement("p");
-    pagesElement.textContent = `Pages: ${book.pages}`;
-    card.appendChild(pagesElement);
-
-    const isReadElement = document.createElement("p");
-    isReadElement.textContent = `Status: ${book.isRead ? "Read" : "Not Read"}`;
-    card.appendChild(isReadElement);
-
-    const btnToggleRead = document.createElement("button");
-    btnToggleRead.classList.add("toggle-read");
-    btnToggleRead.textContent = book.isRead ? "Mark As Unread" : "Mark As Read";
-    card.appendChild(btnToggleRead);
-
-    btnToggleRead.addEventListener("click", () => {
-      book.isRead ? (book.isRead = false) : (book.isRead = true);
-      btnToggleRead.textContent = book.isRead
-        ? "Mark As Unread"
-        : "Mark As Read";
-      isReadElement.textContent = `Status: ${
-        book.isRead ? "Read" : "Not Read"
-      }`;
-    });
-
-    const btnDeleteBook = document.createElement("button");
-    btnDeleteBook.classList.add("delete-book");
-    btnDeleteBook.textContent = "Delete";
-    card.appendChild(btnDeleteBook);
-
-    btnDeleteBook.addEventListener("click", () => {
-      myLibrary.splice(index, 1);
-      displayBookLibrary();
-    });
-
-    libraryContainer.appendChild(card);
-  });
-}
-
 function addBookToLibrary(author, title, pages, isRead) {
   let book = new Book(author, title, pages, isRead);
 
@@ -86,6 +36,23 @@ function addBookToLibrary(author, title, pages, isRead) {
 }
 
 submit.addEventListener("click", (e) => {
+  author.setCustomValidity("");
+  title.setCustomValidity("");
+  pages.setCustomValidity("");
+
+  if (author.value == "") {
+    author.setCustomValidity("Please enter the author.");
+    return;
+  }
+  if (title.value == "") {
+    title.setCustomValidity("Please enter the title.");
+    return;
+  }
+  if (pages.value <= 0) {
+    pages.setCustomValidity("Please enter a valid page number.");
+    return;
+  }
+
   e.preventDefault();
   addBookToLibrary(author.value, title.value, pages.value, isRead.checked);
   author.value = "";
@@ -93,6 +60,6 @@ submit.addEventListener("click", (e) => {
   pages.value = "";
   isRead.checked = false;
 
-  displayBookLibrary();
+  displayBookLibrary(libraryContainer, myLibrary);
   dialog.close();
 });
